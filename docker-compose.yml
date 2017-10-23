@@ -1,29 +1,20 @@
-version: '2' 
+version: '3' 
 services:
   web:
-    build: Dockerfiles/anaconda
+    build: Dockerfiles/anaconda3
     env_file: .env
-    ports:
-      - 5000:5000
     volumes:
       - ./:/mediapy
+    command: bash -c "mkdir -p /notebooks && 
+                      /opt/conda/bin/jupyter notebook --notebook-dir=/notebooks --ip='*' --port=8888 --no-browser --NotebookApp.token=github --allow-root &&
+                      conda install -y -c anaconda pymongo"
+    ports:
+      - 8888:8888
+      - 5000:5000
     depends_on:
       - mongo
-      - jupyter
     links:
-      - mongo
-      - jupyter
-
-  jupyter:
-    build: Dockerfiles/anaconda
-    env_file: .env
-    ports:
-      - "8888:8888"
-    volumes:
-      - ./:/mediapy
-    command: bash -c "/opt/conda/bin/conda install jupyter -y --quiet && mkdir /opt/notebooks && /opt/conda/bin/jupyter notebook --notebook-dir=/opt/notebooks --ip='*' --port=8888
-     --no-browser --allow-root --NotebookApp.token=22f5b"
-
+      - mongo:mongo
   mongo:
     build: Dockerfiles/mongo
     volumes:

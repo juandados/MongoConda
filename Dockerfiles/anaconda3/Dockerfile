@@ -20,6 +20,8 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
+RUN conda install -y -c anaconda pymongo 
+
 ENV PATH /opt/conda/bin:$PATH
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
