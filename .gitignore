@@ -1,0 +1,9 @@
+#Ignoring vim generated files
+*.swo
+*.swp
+.data
+*.sql
+#Ignore all logfiles and tempfiles.
+.env
+/log/*
+/tmp
