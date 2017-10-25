@@ -1,13 +1,12 @@
-version: '3' 
+version: '2' 
 services:
   web:
     build: Dockerfiles/anaconda3
     env_file: .env
     volumes:
       - ./:/mediapy
-    command: bash -c "mkdir -p /notebooks && 
-                      /opt/conda/bin/jupyter notebook --notebook-dir=/notebooks --ip='*' --port=8888 --no-browser --NotebookApp.token=github --allow-root &&
-                      conda install -y -c anaconda pymongo"
+    command: bash -c "mkdir -p mediapy/notebooks && 
+                      /opt/conda/bin/jupyter notebook --notebook-dir=mediapy/notebooks --ip='*' --port=8888 --no-browser --NotebookApp.token=github --allow-root" 
     ports:
       - 8888:8888
       - 5000:5000
@@ -19,5 +18,4 @@ services:
     build: Dockerfiles/mongo
     volumes:
       - ./.data/mongo:/data/db
-    ports:
-      - 27017:27017
+      - ./.dump/mongo:/dump

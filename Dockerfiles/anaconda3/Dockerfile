@@ -20,9 +20,11 @@ RUN apt-get install -y curl grep sed dpkg && \
     rm tini.deb && \
     apt-get clean
 
-RUN conda install -y -c anaconda pymongo 
-
 ENV PATH /opt/conda/bin:$PATH
+
+RUN conda install -c anaconda pymongo 
+RUN conda install -c conda-forge jupyter_nbextensions_configurator
+RUN conda install -c conda-forge jupyter_contrib_nbextensions
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
