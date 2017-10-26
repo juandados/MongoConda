@@ -1,9 +1,12 @@
 #Ignoring vim generated files
 *.swo
 *.swp
+*.swn
 .data
+.dump
 *.sql
 #Ignore all logfiles and tempfiles.
 .env
 /log/*
 /tmp
+notebooks/.ipynb_checkpoints/
