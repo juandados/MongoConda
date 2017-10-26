@@ -1,4 +1,4 @@
-# Mediapy 
+# MongoConda 
 **- _A docker-compose project including Python 3, Jupyter, Mongo databases and Web Service with Flask._ -**
 ## Introduction
 It is a ready to use docker-compose project with a container running a slightly modified [anaconda 3](https://github.com/ContinuumIO/docker-images/tree/master/anaconda3) image, together with a [mongo](https://registry.hub.docker.com/_/mongo/) 
