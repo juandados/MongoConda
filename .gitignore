@@ -6,7 +6,7 @@
 .dump
 *.sql
 #Ignore all logfiles and tempfiles.
-.env
+#.env
 /log/*
 /tmp
 notebooks/.ipynb_checkpoints/
