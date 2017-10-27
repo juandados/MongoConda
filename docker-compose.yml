@@ -15,7 +15,7 @@ services:
     links:
       - mongo:mongo
   mongo:
-    build: Dockerfiles/mongo
+    image: mongo
     env_file: .env
     volumes:
       - ./.data/mongo:/data/db
