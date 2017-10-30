@@ -1,7 +1,5 @@
 FROM ubuntu:latest
 
-MAINTAINER Kamil Kwiek <kamil.kwiek@continuum.io>
-
 ENV LANG=C.UTF-8 LC_ALL=C.UTF-8
 
 RUN apt-get update --fix-missing && apt-get install -y wget bzip2 ca-certificates \
@@ -25,6 +23,8 @@ ENV PATH /opt/conda/bin:$PATH
 RUN conda install -c anaconda pymongo 
 RUN conda install -c conda-forge jupyter_nbextensions_configurator
 RUN conda install -c conda-forge jupyter_contrib_nbextensions
+RUN conda update scikit-learn
+
 
 ENTRYPOINT [ "/usr/bin/tini", "--" ]
 CMD [ "/bin/bash" ]
